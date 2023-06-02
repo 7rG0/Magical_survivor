@@ -13,7 +13,7 @@ public enum GameState  // определяет, в каком состоянии
 
 public class MagicSurvivor : MonoBehaviour
 {
-    [SerializeField] public GameState _gameState = GameState.IDLE; // переменная, которая храит текущее состояние игры
+    [SerializeField] public GameState _gameState = GameState.IDLE; // переменная, которая хранит текущее состояние игры
 
     private Timer timer;
 
@@ -36,6 +36,14 @@ public class MagicSurvivor : MonoBehaviour
         _gameState = GameState.PLAYING;
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape)) 
+        {
+            PauseGame();
+        }
+    }
+
     public void FinishGame()
     {
        _gameState = GameState.FINISHED;
@@ -45,6 +53,7 @@ public class MagicSurvivor : MonoBehaviour
     public void PauseGame()
     {
         _gameState = GameState.IDLE;
+        Time.timeScale = 0f;
        
         
     }
