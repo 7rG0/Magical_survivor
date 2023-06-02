@@ -13,7 +13,7 @@ public class EnemiesManager : MonoBehaviour
 
     private void Update()
     {
-        if (MagicSurvivor.GetGameState == GameState.FINISHED) return;
+        if (MagicSurvivor.magicSurvivorS.GetGameState == GameState.FINISHED) return;
 
         timer -= Time.deltaTime;
         if (timer < 0f)

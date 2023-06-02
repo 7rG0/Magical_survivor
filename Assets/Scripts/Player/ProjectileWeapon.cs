@@ -37,6 +37,6 @@ public class ProjectileWeapon : MonoBehaviour
     {
         GameObject thrownProjectile = Instantiate(ProjectileFrefab);
         thrownProjectile.transform.position = transform.position;
-        thrownProjectile.GetComponent<Projectile>().SetDirection(); //new //изменить надо это
+        
     }
 }

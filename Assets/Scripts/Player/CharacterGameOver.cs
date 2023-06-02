@@ -16,7 +16,7 @@ public class CharacterGameOver : MonoBehaviour
     public void GameOver() 
     {
         rigid.simulated = false; // мобы больше не толкают персонажа после смерти
-        MagicSurvivor.FinishGame();
+        MagicSurvivor.magicSurvivorS.FinishGame();
         GetComponent<PlayerMovement>().enabled = false;
         gameOverPanel.SetActive(true);
         

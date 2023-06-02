@@ -28,6 +28,7 @@ public class WhipWeapon : MonoBehaviour
         timer -= Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && timer < 0f) 
         {
+            
             Attack();
         }
     }
@@ -36,18 +37,18 @@ public class WhipWeapon : MonoBehaviour
     {
         timer = timeToAttack;
 
-        /*if (playerMovement.lastMovingDirX > 0) //new
+        if (playerMovement.lastMovingDir.x > 0) //new
         {
             rightWhipObject.SetActive(true);
             Collider2D[] colliders = Physics2D.OverlapBoxAll(rightWhipObject.transform.position, whipAttackSize, 0f);
             ApplyDamage(colliders);
         }
-        else if (playerMovement.lastMovingDirY < 0) // new
+        else if (playerMovement.lastMovingDir.x < 0) // new
         {
             leftWhipObject.SetActive(true);
             Collider2D[] colliders = Physics2D.OverlapBoxAll(leftWhipObject.transform.position, whipAttackSize, 0f);
             ApplyDamage(colliders);
-        }*/
+        }
     }
 
     private void ApplyDamage(Collider2D[] colliders)

@@ -17,6 +17,11 @@ public class Projectile : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
     }
+
+    private void Start()
+    {
+        SetDirection();
+    }
     private void Update()
     {
         rigid.velocity = direction * speed;

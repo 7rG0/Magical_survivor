@@ -7,19 +7,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-
     private Player player;
 
     private Rigidbody2D rigidbody;
-    [HideInInspector] public Vector2 moveDir = Vector3.right; // переиеновал переменую
-    [HideInInspector] public float lastMovingDir;
-    
-
     private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private float _speed;
+    [HideInInspector] public Vector2 moveDir; // переиеновал переменую
+    [HideInInspector] public Vector2 lastMovingDir; //починить надо
     
     private Vector2 smoothedMovementInput;
     private Vector2 _movementInputSmoothedVelocity;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -30,23 +29,27 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (player.playerState == PlayerState.dead) return;
+        Move();
+        CheckState();
+    }
 
-        smoothedMovementInput = Vector2.SmoothDamp(
-            smoothedMovementInput,
-            moveDir,
-            ref _movementInputSmoothedVelocity,
-            0.1f);
-
+    private void Move()
+    {     
+        smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput,moveDir,ref _movementInputSmoothedVelocity,0.1f);
         rigidbody.velocity = smoothedMovementInput * _speed;
+        Flip();
+    }
 
-        if (moveDir.x < 0 && !spriteRenderer.flipX)
+    private void CheckState()
+    {
+        if (moveDir.x != 0 || moveDir.y != 0)
         {
-            Flip();
+            player.playerState = PlayerState.running;
+            lastMovingDir = moveDir;
         }
-           
-        else if (moveDir.x > 0 && spriteRenderer.flipX)
+        else
         {
-            Flip();
+            player.playerState = PlayerState.idle; 
         }
     }
 
@@ -55,30 +58,17 @@ public class PlayerMovement : MonoBehaviour
         moveDir = inputValue.Get<Vector2>();
     }
 
-    
-
-    //new code
-    private void Update()
-    {
-        
-        // gjghfdbnm
-        
-
-        
-
-        if (moveDir.x != 0 || moveDir.y != 0)
-        {
-            player.playerState = PlayerState.running; //new
-        }
-        else 
-        {
-            player.playerState = PlayerState.idle; //new
-        }
-
-    }
-
     private void Flip()
     {
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        if (moveDir.x < 0 && !spriteRenderer.flipX)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
+
+        else if (moveDir.x > 0 && spriteRenderer.flipX)
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
     }
+
 }

@@ -13,31 +13,36 @@ public enum GameState  // определяет, в каком состоянии
 
 public class MagicSurvivor : MonoBehaviour
 {
-    [SerializeField] static public GameState _gameState = GameState.IDLE; // переменная, которая храит текущее состояние игры
+    [SerializeField] public GameState _gameState = GameState.IDLE; // переменная, которая храит текущее состояние игры
 
+    private Timer timer;
+
+    static public MagicSurvivor magicSurvivorS;
    
 
-    static public GameState GetGameState
+    public GameState GetGameState
     {
         get { return _gameState;}
     }
 
-    static private void Awake()
+    private void Awake()
     {
-
+        magicSurvivorS = this;
+        timer = GetComponent<Timer>();
     }
 
-    static private void Start()
+    private void Start()
     {
         _gameState = GameState.PLAYING;
     }
 
-    static public void FinishGame()
+    public void FinishGame()
     {
        _gameState = GameState.FINISHED;
+        timer.StopTimer();
     }
 
-    static public void PauseGame()
+    public void PauseGame()
     {
         _gameState = GameState.IDLE;
        

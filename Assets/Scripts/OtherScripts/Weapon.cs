@@ -6,6 +6,7 @@ enum MeleeWeaponType
 {
     none,
     basicMeleeWeapon
+    
 }
 enum RangeWeaponType
 {
