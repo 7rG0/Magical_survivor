@@ -11,8 +11,6 @@ public class Enemy : MonoBehaviour, IDamageble
     [SerializeField] private float speed;
 
     private Rigidbody2D _rigidbody;
-
-    public int g = 1;
     
 
     [SerializeField] private int hp = 50; // изменил хп
