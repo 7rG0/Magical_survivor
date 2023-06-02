@@ -141,7 +141,6 @@ GameObject:
   - component: {fileID: 31219800}
   - component: {fileID: 31219801}
   - component: {fileID: 31219802}
-  - component: {fileID: 31219803}
   - component: {fileID: 31219804}
   - component: {fileID: 31219805}
   m_Layer: 0
@@ -374,19 +373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 450117216}
   weaponParent: {fileID: 1775439396}
---- !u!114 &31219803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31219791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8355b45d29c949245b14e4adc94e1733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timertext: {fileID: 1269981734}
 --- !u!114 &31219804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2060,6 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4b8a9c2a4103f489cc1c53f21954a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameState: 0
 --- !u!114 &488098122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2169,6 +2156,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2321,6 +2309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4b8a9c2a4103f489cc1c53f21954a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameState: 0
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,6 +2323,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mousePosScreen: {x: 0, y: 0}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8355b45d29c949245b14e4adc94e1733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timertext: {fileID: 1269981734}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,7 +3339,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -256.63004, y: 428.21555, z: 244.69379, w: -444.62643}
+  m_margin: {x: -256.63004, y: 428.21555, z: 164.12383, w: -444.62643}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
